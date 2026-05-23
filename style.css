@@ -799,7 +799,7 @@ section {
 /* Skills Section */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 30px;
 }
 
@@ -865,7 +865,7 @@ section {
 /* Projects Section */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 30px;
 }
 
@@ -1572,11 +1572,31 @@ footer {
     gap: 40px;
   }
   .hero-right { order: -1; }
-  .terminal-layout { grid-template-columns: 1fr; }
-  .terminal-sidebar { border-right: none; border-bottom: 1px solid var(--border-color); max-height: 200px; }
+  .terminal-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px 1fr;
+  }
+  .terminal-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    max-height: 150px;
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: 768px) {
+  section {
+    padding: 80px 20px 40px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .status-badge {
+    display: none;
+  }
+
   nav {
     display: none; /* Can be toggled on mobile */
     position: fixed;
@@ -1602,9 +1622,42 @@ footer {
     display: block;
   }
   
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
+  
   .hero-title { font-size: 2.5rem; }
   .hero-btns { flex-direction: column; }
   .profile-attributes { grid-template-columns: 1fr; }
-  .blog-terminal-container { height: auto; min-height: 600px; }
+  .blog-terminal-container { height: 600px; }
   .footer-container { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hologram-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .hologram-avatar {
+    top: 30px;
+    left: 30px;
+    width: calc(100% - 60px);
+    height: calc(100% - 60px);
+  }
+  
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+  
+  .hero-typing {
+    font-size: 0.85rem;
+    padding: 12px 15px;
+  }
 }
