@@ -1,0 +1,135 @@
+{
+  "projects": [
+    {
+      "id": "honeypot",
+      "name": "Cowrie Honeypot Dashboard",
+      "repo": "AI-Powered-SSH-Honeypot-Threat-Intelligence-System",
+      "description": "An intelligent cybersecurity system integrating a Cowrie SSH/Telnet honeypot with machine learning behavioral classification. Logs real-world brute-force attempts, extracts attacker behavior profiles, and outputs structured intelligence using a custom visual dashboard.",
+      "tech_stack": ["Python", "Cowrie", "Scikit-Learn", "Kippo-Graph", "Threat Intel", "Elasticsearch"],
+      "command": "python3 honeypot_intel.py --parse-log /var/log/cowrie.json --classify-behavior",
+      "features": [
+        "Honeypot-based automated attack capture and logging",
+        "Extraction of behavioral features (session duration, command count, password patterns)",
+        "Machine learning models classifying attacker sophistication (Bot vs Human)",
+        "Real-time IP threat intelligence lookups and geological mapping"
+      ]
+    },
+    {
+      "id": "stego",
+      "name": "Emoji Steganography Tool",
+      "repo": "emoji-stegnography",
+      "description": "A high-performance command-line utility written in C that hides, extracts, and encrypts payloads within common Unicode emoji sequences. Offers absolute stealth for secret transmissions inside normal chat logs, designed for evasion research.",
+      "tech_stack": ["C", "Cryptography", "Unicode Standards", "Steganography", "Evasion Protocols"],
+      "command": "gcc -O3 emoji_steg.c -o emoji_steg && ./emoji_steg --hide --secret pass.txt --out cover.txt",
+      "features": [
+        "Base-1024 Unicode emoji payload mapping and extraction algorithms",
+        "XOR-based light payload obfuscation to prevent standard pattern scanning",
+        "High processing speed and zero dependency footprint written in ANSI C",
+        "Interactive CLI options for payload embedding and verification logs"
+      ]
+    },
+    {
+      "id": "cryptotool",
+      "name": "RSA/SHA Toolkit",
+      "repo": "rsa-sha-toolkit",
+      "description": "A cryptographic sandbox demonstrating asymmetric encryption and message hashing. Enables generation of custom bits key pairs, custom optimal asymmetric encryption padding (OAEP) configurations, and file integrity check systems.",
+      "tech_stack": ["Python", "Cryptography", "Mathematics", "SHA-256", "Secure Keygen"],
+      "command": "python3 cryptool.py --generate-keys --bit-size 4096 --hash sha256 --input payload.bin",
+      "features": [
+        "RSA key generation from scratch using prime number algorithms",
+        "Implementation of custom PKCS#1 v1.5 and OAEP padding systems",
+        "SHA-256 verification and file integrity dashboard checks",
+        "Educational interface showing mathematical steps of cryptographic algorithms"
+      ]
+    },
+    {
+      "id": "malware",
+      "name": "Malware Sandbox & Lab",
+      "repo": "malware-labs",
+      "description": "A secured, isolated host setup for running dynamic and static analysis of suspicious binaries. Configured with network containment, process tracking hooks, and custom signature scanners to dissect executable workflows.",
+      "tech_stack": ["YARA", "Wireshark", "Windows Internals", "Sysinternals", "Virtualization"],
+      "command": "yara -r -w rules/malware_heuristics.yar ./quarantine_binaries/",
+      "features": [
+        "Secured host-only virtual network routing to capture DNS redirects and requests",
+        "Custom YARA rules mapping signature hashes and system API hook calls",
+        "Automated PCAP parser outputting malicious domains from Wireshark captures",
+        "Process tree reconstruction profiling runtime registry mutations"
+      ]
+    },
+    {
+      "id": "wireguard",
+      "name": "AWS WireGuard VPN Lab",
+      "repo": "aws-wireguard-vpn-setup",
+      "description": "An automated infrastructure-as-code project deploying a secure, high-performance WireGuard gateway within an AWS Ubuntu instance. Features peer-to-peer tunnels, route optimization tables, and hardened firewall configurations.",
+      "tech_stack": ["AWS EC2", "WireGuard", "Shell Scripting", "VPC Networking", "Firewall Hardening"],
+      "command": "wg-quick up wg0 && wg show && iptables -L -v -n",
+      "features": [
+        "Ubuntu EC2 instance automation with specific security groups and port mappings",
+        "Custom shell configuration script setting up secure server-side wg interfaces",
+        "Hardened firewall policies (iptables) routing client traffic securely to net interfaces",
+        "Performance optimization profiling MTU configurations for encrypted payloads"
+      ]
+    },
+    {
+      "id": "phishing",
+      "name": "Phishing Email Scanner",
+      "repo": "phishing-emai-analyzer",
+      "description": "A high-efficiency web scanner written in C++ using the Crow framework. Analyzes body structure, header authenticity, and domain registration metrics to prevent cyber attacks, storing history inside a MySQL server.",
+      "tech_stack": ["C++", "Crow Framework", "MySQL", "Database Automation", "HTML5", "Regular Expressions"],
+      "command": "./phishing_scanner --bind 127.0.0.1 --port 8080 --db-config /etc/phish/db.conf",
+      "features": [
+        "C++ Crow framework backend executing keyword scanning on header inputs",
+        "Automated domain evaluation connecting to MySQL procedures and database triggers",
+        "Dynamic web interface rendering analytics of threat severity levels",
+        "Database logging tracking compromised domains for recurrent threat mitigation"
+      ]
+    }
+  ],
+  "blog_posts": [
+    {
+      "id": "suricata",
+      "title": "Designing Real-Time Threat Intelligence with Suricata IDS",
+      "category": "Threat Intelligence",
+      "date": "2026-05-15",
+      "read_time": "5 min read",
+      "snippet": "Configuring Suricata to parse network packets, detect malicious signatures, and forward structured logs to a SIEM dashboard...",
+      "content": "### Real-Time Threat Intel with Suricata IDS\n\nIntrusion Detection Systems (IDS) are the cornerstones of modern network security. In this writeup, I document the deployment and configuration of **Suricata IDS** to capture malicious traffic and integrate alerts into a central analytics dashboard.\n\n#### 1. Setup & Interfaces\nInstalling Suricata on Ubuntu is straightforward, but configuring the capture interface is where accuracy is determined. We configure Suricata to run in Promiscuous Mode on our monitoring interface:\n\n```bash\n# Edit /etc/suricata/suricata.yaml\nvars:\n  address-groups:\n    HOME_NET: \"[192.168.1.0/24]\"\n    EXTERNAL_NET: \"!$HOME_NET\"\n\n# Start Suricata in monitoring mode\nsudo suricata -c /etc/suricata/suricata.yaml -i eth0\n```\n\n#### 2. Writing Custom Security Signatures\nStandard signatures detect known bad hashes or IPs, but modern threat intelligence requires behavioral signatures. For instance, detecting SSH brute force attempts or dynamic command execution shells:\n\n```text\nalert tcp $EXTERNAL_NET any -> $HOME_NET 22 (\n  msg:\"ECHO_SEC: Inbound SSH Bruteforce Detected\";\n  flow:to_server,established;\n  flags:S;\n  threshold:type threshold, track by_src, count 5, seconds 60;\n  classtype:attempted-recon;\n  sid:1000001; rev:1;\n)\n```\n\n#### 3. Log Forwarding & Elastic Stack\nSuricata logs events in a highly structured JSON format called `eve.json`. We forward these logs via Filebeat to our Elasticsearch instance, building rich dashboards visualization that map source countries, signatures triggered, and targeted internal host systems. This provides security teams with immediate tactical insight into ongoing attack vectors."
+    },
+    {
+      "id": "ai-sec",
+      "title": "Machine Learning Classification of SSH Brute-Force Attacks",
+      "category": "AI Security",
+      "date": "2026-04-28",
+      "read_time": "7 min read",
+      "snippet": "Using Scikit-Learn to distinguish between script-based automated dictionary attacks and manual human-driven terminal operations...",
+      "content": "### Applying Machine Learning to Honeypot Traffic\n\nTraditional firewalls block malicious IPs based on flat lists. However, advanced threats rotate IPs rapidly. Our system uses Machine Learning to analyze the behavioral attributes of incoming SSH connections collected via a Cowrie Honeypot, classifying attackers into categories: **Automated Scripts (Bots)** vs. **Interactive Intruders (Humans)**.\n\n#### 1. Feature Engineering\nFrom raw Cowrie honeypot logs, we extract connection-level features:\n- **Session Duration:** Time elapsed between connection and socket closure.\n- **Command Density:** Ratio of shell commands executed to total interaction time.\n- **Password Retries:** Total password variations tested before failure/exit.\n- **Keystroke Timing Variance:** Time delays between commands (to identify human typing signatures versus script loops).\n\n#### 2. Model Training in Python\nWe compile these features into a structured pandas DataFrame, scaling inputs and splitting them for training. We use a **Random Forest Classifier** which provides high accuracy and model interpretability:\n\n```python\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\n\n# Features: [duration, cmd_count, retry_count, timing_variance]\nX = df[['duration', 'cmd_count', 'retries', 'timing_var']]\ny = df['attacker_type'] # 0 = Bot, 1 = Human\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\nclf = RandomForestClassifier(n_estimators=100, max_depth=8)\nclf.fit(X_train, y_train)\n\nprint(f\"Accuracy: {clf.score(X_test, y_test) * 100:.2f}%\")\n```\n\n#### 3. Results & Active Defense Mitigation\nThe Random Forest model achieves **98.4% accuracy** in detecting automated botnets within the first 45 seconds of session start. When a human intruder is detected, the honeypot dynamically transitions from simulated filesystem to a high-interaction containment zone, while triggering immediate Slack notifications to the system administrator."
+    },
+    {
+      "id": "crypto-vuln",
+      "title": "Asymmetric Cryptography: Implementing Hardened RSA & SHA Integrities",
+      "category": "Cryptography",
+      "date": "2026-04-03",
+      "read_time": "6 min read",
+      "snippet": "Exploring RSA key generation mechanics, key vulnerabilities, and configuring secure padding systems to block chosen-ciphertext attacks...",
+      "content": "### RSA & SHA Cryptographic Core Principles\n\nCryptographic security is often implemented through libraries like OpenSSL. However, securing systems requires understanding the underlying mathematics of key generation and padding structures.\n\n#### 1. RSA Key Generation Mechanics\nRSA security relies on the hardness of factoring large composite prime numbers. The algorithm works as follows:\n1. Choose two large primes $p$ and $q$.\n2. Compute $n = pq$ and Euler's totient $\\phi(n) = (p-1)(q-1)$.\n3. Select an integer $e$ such that $1 < e < \\phi(n)$ and $\\gcd(e, \\phi(n)) = 1$ (commonly $65537$).\n4. Solve for $d$ where $d \\equiv e^{-1} \\pmod{\\phi(n)}$.\n\n#### 2. The Danger of Padding-less RSA (Textbook RSA)\nTextbook RSA encryption $c = m^e \\pmod n$ is highly vulnerable to chosen-ciphertext attacks. If an attacker intercepts $c$ and sends $c \\cdot 2^e$ to a decryption oracle, the decrypted response yields $2m \\pmod n$, leaking $m$. \nTo mitigate this, we implement **OAEP (Optimal Asymmetric Encryption Padding)** which uses cryptographic hash functions to pad messages and inject randomness before modular exponentiation.\n\n#### 3. Message Digest Security with SHA-256\nWe combine RSA signing with SHA-256 digests to guarantee file integrity. We write a script that generates hash signatures, encrypts the hash with the sender's private key, and appends it to files. The receiver decrypts the signature with the public key and compares it against a fresh SHA-256 hash. If even a single byte differs, the integrity check fails instantly."
+    },
+    {
+      "id": "sandbox-build",
+      "title": "Building an Isolated Malware Analysis Sandbox on Linux Systems",
+      "category": "Malware Analysis",
+      "date": "2026-03-22",
+      "read_time": "8 min read",
+      "snippet": "Designing a hardened, network-restricted kernel sandbox to safely analyze ELF and PE binary processes without host infection...",
+      "content": "### Secure Malware Containment Sandbox\n\nAnalyzing live malware requires absolute system isolation. This writeup describes how to establish a secure virtualization sandbox on a Linux host, capturing malicious communication profiles without risk to local network devices.\n\n#### 1. Network Containment & Hardened VLANs\nWe isolate our analyzer Virtual Machine using a custom virtual network device. We configure IP forwarding rules on the host to drop all egress packets except those routed to an active honeynet loopback. This tricks the malware into thinking it has access to the internet while containing all payloads:\n\n```bash\n# Create a host-only bridge interface\nsudo ip link add br0 type bridge\nsudo ip link set br0 up\nsudo ip addr add 192.168.100.1/24 dev br0\n\n# Apply iptables rules to drop outgoing WAN traffic\nsudo iptables -A FORWARD -i br0 ! -o lo -j REJECT\n```\n\n#### 2. Dynamic Analysis & Process Tracking\nWe use **Sysdig** or standard `strace` logs to track kernel calls executed by the binary. Executing suspicious scripts inside the sandbox registers process spawns, network sockets opened, and modified configuration files. We filter results to pinpoint unauthorized access:\n\n```bash\n# Run strace on quarantined ELF binary\nstrace -f -e trace=network,file -o malware_syscalls.txt ./malicious_elf\n```\n\n#### 3. Yara Signature Matching\nWe write custom YARA rules to automate identification of family-specific signatures in binary memory dumps. By analyzing the memory offsets of strings and byte arrays, we flag packers, encrypted payloads, and command-and-control connection URLs before they execute."
+    },
+    {
+      "id": "hardening",
+      "title": "Red Team Evasion & Blue Team Linux Hardening Protocols",
+      "category": "Linux Security",
+      "date": "2026-02-10",
+      "read_time": "5 min read",
+      "snippet": "Securing a Linux target against privilege escalation, active port scans, and setting up persistent integrity auditing systems...",
+      "content": "### Linux Security Hardening Checklist\n\nIn both CTF scenarios and enterprise operations, securing a Linux terminal from unauthorized privileges is crucial. This checklist goes beyond changing basic passwords, detailing kernel modifications and system integrity auditing.\n\n#### 1. Securing the Kernel via sysctl\nWe can prevent several networking attacks (like IP spoofing and ICMP redirect manipulation) by modifying kernel parameters at runtime. Add the following to `/etc/sysctl.conf`:\n\n```ini\n# Ignore ICMP broadcast requests (smurf attack protection)\nnet.ipv4.icmp_echo_ignore_broadcasts = 1\n\n# Disable packet forwarding\nnet.ipv4.ip_forward = 0\n\n# Enable TCP SYN cookies to mitigate SYN flood attacks\nnet.ipv4.tcp_syncookies = 1\n\n# Enable Source Route Verification (Reverse Path Filtering)\nnet.ipv4.conf.all.rp_filter = 1\n```\n\n#### 2. Restricting Privileged Accounts\nAudit accounts with shell access (`/etc/passwd`) and lock default system accounts. Use `sudoers` configurations to apply the principle of least privilege, requiring password entry for all commands and restricting access to critical binary utilities (e.g. `chmod`, `chown`).\n\n#### 3. File System Integrity Monitoring\nWe deploy **AIDE (Advanced Intrusion Detection Environment)** to verify that system binaries (`/bin`, `/sbin`, `/usr/bin`) have not been modified or replaced with backdoors. AIDE builds a database of SHA hash signatures of these files, and alerts when discrepancies are found during daily cron jobs."
+    }
+  ]
+}

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echo $USER // Bala Satwik Boyina - Cybersecurity Portfolio</title>
+  <meta name="description" content="Futuristic cinematic hacker-style portfolio for Echo Satwik (Bala Satwik Boyina), showcasing Cowrie Honeypots, RSA Cryptography, Malware analysis, AWS networking, and cybersecurity research.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CRT Visual Effects -->
+  <div class="crt-overlay"></div>
+  <div class="crt-vignette"></div>
+
+  <!-- Cyber Grid Background and Canvas Particles -->
+  <div class="cyber-bg"></div>
+  <div class="cyber-lines"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Terminal Boot Overlay -->
+  <div id="boot-overlay">
+    <div class="boot-terminal">
+      <div class="boot-header">
+        <div class="boot-controls">
+          <span class="boot-close"></span>
+          <span class="boot-minimize"></span>
+          <span class="boot-maximize"></span>
+        </div>
+        <div>guest@echo-security: ~/sec_core_boot</div>
+        <div style="width: 40px;"></div>
+      </div>
+      <div class="boot-content" id="boot-log-content">
+        <div class="boot-cursor"></div>
+        
+        <!-- Access Granted Panel (appears after printout) -->
+        <div id="access-panel">
+          <div class="access-title SUCCESS">ACCESS GRANTED</div>
+          <button class="access-btn" id="access-btn">DECRYPT_INTERFACE.SH</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <span class="logo-dot"></span>
+        ECHO_SATWIK <span>// SEC_CORE</span>
+      </a>
+      
+      <nav>
+        <ul>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#skills">SKILLS</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
+          <li><a href="#certifications">CERTIFICATIONS</a></li>
+          <li><a href="#github">ACTIVITY</a></li>
+          <li><a href="#blog">RESEARCH_SHELL</a></li>
+          <li><a href="#contact">CONTACT_PROT</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right">
+        <div class="status-badge">
+          <span class="logo-dot" style="animation-duration: 0.8s;"></span>
+          STATUS: MONITORED
+        </div>
+        <button class="audio-toggle" id="audio-toggle" title="Toggle audio feedback">
+          <!-- Audio Disabled Icon by Default -->
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-subtitle">SYSTEM.OUT.PRINTLN("ECHO_DECRYPT");</div>
+        <h1 class="hero-title">ECHO $USER:<br><span>BALA SATWIK</span></h1>
+        <p class="hero-tagline">Cybersecurity Engineer & Penetration Tester. Building intelligent defensive honeypots, hardening networks, and analyzing cryptographic payloads.</p>
+        
+        <div class="hero-typing">
+          <span>&gt;</span>
+          <span id="typing-effect">status: check_tunnel // decrypt: SHA_256</span>
+          <span class="boot-cursor"></span>
+        </div>
+
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">
+            DECRYPT PROJECTS
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="16" width="16"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="https://acesse.one/asqa7l6" target="_blank" class="btn btn-secondary">
+            DOWNLOAD RESUME
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="16" width="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            ESTABLISH CONTACT
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="16" width="16"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-right">
+        <div class="hologram-container">
+          <div class="hologram-circle"></div>
+          <div class="hologram-circle-inner"></div>
+          <div class="hologram-avatar">
+            <img src="portfolio.jpeg" alt="Bala Satwik" class="hologram-img">
+          </div>
+          <div class="hologram-glitch"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="scroll-reveal">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_01]</span>
+      <h2 class="section-title">SYSTEM PROFILE</h2>
+    </div>
+    
+    <div class="about-grid">
+      <div class="system-profile neon-border">
+        <div class="profile-header">
+          <span>&gt;_ PROFILE_DECRYPT.DAT</span>
+          <span>INTEGRITY: OK</span>
+        </div>
+        <div class="profile-body">
+          <p class="profile-desc">
+            Hi, I'm **Bala Satwik Boyina (Echo Satwik)**. I'm a passionate Cybersecurity Engineer specializing in the design of secure network architectures, honeypots, and vulnerability research. My work ranges from building dynamic threat intelligence pipelines to developing micro steganography applications and establishing secure tunnels in cloud environments.
+          </p>
+          <div class="profile-attributes">
+            <div class="attribute-item">
+              <span class="attribute-label">GUEST PROFILE</span>
+              <span class="attribute-value">b-satwik</span>
+            </div>
+            <div class="attribute-item">
+              <span class="attribute-label">OPERATING SYSTEM</span>
+              <span class="attribute-value">Linux / Unix Core</span>
+            </div>
+            <div class="attribute-item">
+              <span class="attribute-label">CLEARANCE LEVEL</span>
+              <span class="attribute-value">L3 Sec Access</span>
+            </div>
+            <div class="attribute-item">
+              <span class="attribute-label">ACTIVE TUNNEL</span>
+              <span class="attribute-value">WireGuard wg0 [10.8.0.1]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cyber-panel neon-border">
+        <h3 class="panel-title">ACTIVE DEFENSE TELEMETRY</h3>
+        <ul class="security-status-list">
+          <li>
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Suricata IDS Sensor: Active Monitoring
+          </li>
+          <li>
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Cowrie SSH Honeypot: Capturing Logs
+          </li>
+          <li>
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Malware Sandbox: Contained & Isolated
+          </li>
+          <li>
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Kernel Integrity: Verified Checksum
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="scroll-reveal">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_02]</span>
+      <h2 class="section-title">SKILLS & ATTACK SURFACES</h2>
+    </div>
+
+    <div class="skills-grid">
+      <!-- Category 1 -->
+      <div class="skill-category neon-border">
+        <h3 class="skill-category-title">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          NETWORK SECURITY & CLOUD
+        </h3>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Suricata IDS Integration</span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">AWS EC2, VPC, & security groups</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">WireGuard VPN tunnels Setup</span>
+              <span class="skill-percent">95%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Firewalls & iptables Routing</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="skill-category neon-border">
+        <h3 class="skill-category-title">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          CRYPTOGRAPHY & EVASION
+        </h3>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">RSA (Keygen, Padding Mechanics)</span>
+              <span class="skill-percent">88%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">SHA Hash Algorithms & Signatures</span>
+              <span class="skill-percent">92%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Emoji Steganography Evasion</span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">TLS / Secure Sockets Layer</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="skill-category neon-border">
+        <h3 class="skill-category-title">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          DEFENSE & PROGRAMMING
+        </h3>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Cowrie Honeypot Analytics</span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Malware Containment & Sandboxing</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Programming: C / C++ / Python</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name">Database Sec & MySQL Triggers</span>
+              <span class="skill-percent">82%</span>
+            </div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="scroll-reveal">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_03]</span>
+      <h2 class="section-title">SECURE PROJECTS DASHBOARD</h2>
+    </div>
+
+    <!-- Target container for projects (will be filled dynamically) -->
+    <div class="projects-grid" id="projects-container">
+      <div style="color: var(--accent-purple); font-family: var(--font-cyber); text-align: center; grid-column: 1/-1; padding: 40px;">
+        [Loading local projects database. Decrypting indices...]
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="scroll-reveal">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_04]</span>
+      <h2 class="section-title">VERIFIED BADGES & CERTS</h2>
+    </div>
+
+    <div class="cert-grid">
+      <!-- Cert 1 -->
+      <div class="cert-card neon-border">
+        <div class="cert-badge-wrapper">
+          <div class="cert-icon">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="28" width="28"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+        </div>
+        <h3 class="cert-name">Red Hat System Administration I (RH124)</h3>
+        <div class="cert-issuer">Red Hat</div>
+        <div class="cert-date">STATUS: UNVERIFIED</div>
+      </div>
+
+      <!-- Cert 2 -->
+      <div class="cert-card neon-border">
+        <div class="cert-badge-wrapper">
+          <div class="cert-icon">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="28" width="28"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="19.07" y1="4.93" x2="14.83" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="9.17" y1="14.83" x2="4.93" y2="19.07"></line></svg>
+          </div>
+        </div>
+        <h3 class="cert-name">Ubuntu Linux Professional Certificate</h3>
+        <div class="cert-issuer">Canonical</div>
+        <div class="cert-date">VERIFIED // 2026</div>
+      </div>
+
+      <!-- Cert 3 -->
+      <div class="cert-card neon-border">
+        <div class="cert-badge-wrapper">
+          <div class="cert-icon">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="28" width="28"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+        </div>
+        <h3 class="cert-name">Cybersecurity Job Simulation</h3>
+        <div class="cert-issuer">Forage</div>
+        <div class="cert-date">VERIFIED // 2026</div>
+      </div>
+
+      <!-- Cert 4 -->
+      <div class="cert-card neon-border">
+        <div class="cert-badge-wrapper">
+          <div class="cert-icon">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="28" width="28"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+          </div>
+        </div>
+        <h3 class="cert-name">Capture The Flag (CTF) Participant</h3>
+        <div class="cert-issuer">HTB & TryHackMe</div>
+        <div class="cert-date">VERIFIED // ACTIVE</div>
+      </div>
+
+      <!-- Cert 5 -->
+      <div class="cert-card neon-border">
+        <div class="cert-badge-wrapper">
+          <div class="cert-icon">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="28" width="28"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+        </div>
+        <h3 class="cert-name">Programming in C</h3>
+        <div class="cert-issuer">NPTEL / IIT Kharagpur</div>
+        <div class="cert-date">VERIFIED // 2025</div>
+      </div>
+
+      <!-- Cert 6 -->
+      <div class="cert-card neon-border">
+        <div class="cert-badge-wrapper">
+          <div class="cert-icon">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="28" width="28"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+          </div>
+        </div>
+        <h3 class="cert-name">Introduction to Operating Systems</h3>
+        <div class="cert-issuer">NPTEL / IIT Madras</div>
+        <div class="cert-date">VERIFIED // 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Activity Grid Section -->
+  <section id="github" class="scroll-reveal">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_05]</span>
+      <h2 class="section-title">ACTIVE DEV STREAM</h2>
+    </div>
+
+    <div class="github-activity neon-border">
+      <div class="activity-header">
+        <div class="activity-title">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>github.com/b-satwik</span>
+        </div>
+        <div class="grid-legend">
+          <span>Less</span>
+          <div class="legend-cells">
+            <div class="contribution-cell"></div>
+            <div class="contribution-cell level-1"></div>
+            <div class="contribution-cell level-2"></div>
+            <div class="contribution-cell level-3"></div>
+            <div class="contribution-cell level-4"></div>
+          </div>
+          <span>More</span>
+        </div>
+      </div>
+      
+      <!-- Mock Contribution Grid (Custom Seeded Grid mapping real activity pattern) -->
+      <div class="activity-grid-wrapper">
+        <div class="contribution-grid">
+          <!-- Generate random pattern cells -->
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell"></div><div class="contribution-cell"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-4"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div>
+          <div class="contribution-cell level-4"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-3"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-1"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-1"></div>
+          <div class="contribution-cell level-3"></div><div class="contribution-cell level-4"></div><div class="contribution-cell level-1"></div><div class="contribution-cell level-2"></div><div class="contribution-cell level-3"></div><div class="contribution-cell"></div><div class="contribution-cell level-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTF Lab & Blog Terminal Screen -->
+  <section id="blog" class="scroll-reveal">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_06]</span>
+      <h2 class="section-title">RESEARCH SHELL & CTF LOGS</h2>
+    </div>
+
+    <div class="blog-terminal-container neon-border">
+      <div class="blog-terminal-header">
+        <div class="terminal-title">
+          <span class="logo-dot" style="background-color: var(--accent-purple); box-shadow: 0 0 8px var(--accent-purple-glow);"></span>
+          RESEARCH_DATABASE // guest@echo-security
+        </div>
+        <div class="boot-controls" style="opacity: 0.5;">
+          <span class="boot-close"></span>
+          <span class="boot-minimize"></span>
+          <span class="boot-maximize"></span>
+        </div>
+      </div>
+      
+      <div class="terminal-layout">
+        <div class="terminal-sidebar" id="blog-sidebar">
+          <!-- Populated dynamically via JS -->
+          <div class="sidebar-title">DECRYPTED_POSTS</div>
+        </div>
+        
+        <div class="terminal-display" id="terminal-display">
+          <!-- Dynamic Text Typing Render -->
+          guest@echo-security:~$ _
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Protocol Section -->
+  <section id="contact" class="scroll-reveal" style="padding-bottom: 100px;">
+    <div class="section-header">
+      <span class="section-code">[SEC_MODULE_07]</span>
+      <h2 class="section-title">CONTACT PROTOCOL</h2>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-card neon-border">
+          <p class="contact-lead">Establish a secure connection. You can reach out directly via encrypted channels or send a message through the local terminal socket.</p>
+          
+          <div class="contact-methods">
+            <!-- Mail -->
+            <a href="mailto:balasatwikcontact@proton.me" class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="contact-method-text">
+                <span class="contact-method-label">PROTONMAIL // SECURE</span>
+                <span class="contact-method-value">balasatwikcontact@proton.me</span>
+              </div>
+            </a>
+            
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/bala-satwik-boyina" target="_blank" class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </div>
+              <div class="contact-method-text">
+                <span class="contact-method-label">LINKEDIN // PROFESSIONAL</span>
+                <span class="contact-method-value">in/bala-satwik-boyina</span>
+              </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/b-satwik" target="_blank" class="contact-method-item">
+              <div class="contact-method-icon">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </div>
+              <div class="contact-method-text">
+                <span class="contact-method-label">GITHUB // CODEBASE</span>
+                <span class="contact-method-value">github.com/b-satwik</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form Terminal UI -->
+      <div class="contact-shell-wrapper neon-border">
+        <div class="shell-header">&gt;_ SEND_SECURE_PAYLOAD.SH</div>
+        <div class="shell-body">
+          <form class="shell-form" id="contact-form">
+            <div class="shell-input-group">
+              <label class="shell-prompt" for="sender-name">guest@echo-security:~$ --input-name</label>
+              <input class="shell-field" id="sender-name" type="text" placeholder="Enter Name..." required>
+            </div>
+            
+            <div class="shell-input-group">
+              <label class="shell-prompt" for="sender-email">guest@echo-security:~$ --input-email</label>
+              <input class="shell-field" id="sender-email" type="email" placeholder="Enter Secure Return Mail..." required>
+            </div>
+
+            <div class="shell-input-group">
+              <label class="shell-prompt" for="sender-message">guest@echo-security:~$ --input-payload</label>
+              <textarea class="shell-field" id="sender-message" placeholder="Enter message payload details..." required></textarea>
+            </div>
+
+            <button class="shell-submit-btn" type="submit">
+              EXECUTE_TRANSMISSION.SH
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="16" width="16"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+            
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-text">
+        © 2026 Echo Satwik Core. Decrypted successfully. Hardened under Linux kernel policies.
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/b-satwik" target="_blank" title="GitHub">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/bala-satwik-boyina" target="_blank" title="LinkedIn">
+          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="18" width="18"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
