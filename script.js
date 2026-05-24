@@ -95,6 +95,60 @@ let particles = [];
 const particleCount = 65;
 const maxDistance = 120;
 
+let mouseX = 0;
+let mouseY = 0;
+let isMouseActive = false;
+
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  isMouseActive = true;
+});
+
+window.addEventListener('mouseleave', () => {
+  isMouseActive = false;
+});
+
+// Click Sparks Code Particles
+let clickBits = [];
+
+class ClickBit {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.text = Math.random() > 0.5 ? '1' : '0';
+    if (Math.random() > 0.8) {
+      const hex = ['0xEF', '0x2B', '0x9C', '0x4F', '0xAA', '0xFF', 'SYS', 'SEC'];
+      this.text = hex[Math.floor(Math.random() * hex.length)];
+    }
+    this.vx = (Math.random() - 0.5) * 2;
+    this.vy = (Math.random() - 0.5) * 2 - 1.5;
+    this.alpha = 1.0;
+    this.color = Math.random() > 0.5 ? 'rgba(0, 255, 102, ' : 'rgba(182, 36, 255, ';
+  }
+  
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.alpha -= 0.015;
+  }
+  
+  draw() {
+    ctx.save();
+    ctx.font = '9px monospace';
+    ctx.fillStyle = this.color + this.alpha + ')';
+    ctx.fillText(this.text, this.x, this.y);
+    ctx.restore();
+  }
+}
+
+window.addEventListener('click', (e) => {
+  if (e.target.closest('#access-btn')) return;
+  for (let i = 0; i < 8; i++) {
+    clickBits.push(new ClickBit(e.clientX, e.clientY));
+  }
+});
+
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -140,6 +194,27 @@ function animateParticles() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   particles.forEach(p => {
+    // Mouse attraction/repulsion & dynamic cursor lines
+    if (isMouseActive) {
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (dist < 150) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.strokeStyle = p.color.replace('0.45', '0.07');
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+        
+        // Repel particle slightly
+        const force = (150 - dist) / 150;
+        p.x += (dx / dist) * force * 0.6;
+        p.y += (dy / dist) * force * 0.6;
+      }
+    }
+    
     p.update();
     p.draw();
   });
@@ -166,6 +241,13 @@ function animateParticles() {
       }
     }
   }
+  
+  // Update and draw floating click bits
+  clickBits = clickBits.filter(b => b.alpha > 0);
+  clickBits.forEach(b => {
+    b.update();
+    b.draw();
+  });
   
   requestAnimationFrame(animateParticles);
 }
@@ -280,6 +362,7 @@ async function loadData() {
     
     renderProjects();
     renderBlogSidebar();
+    initTilt();
     
     // Load initial blog post
     if (blogPostsData.length > 0) {
@@ -605,3 +688,142 @@ contactForm.addEventListener("submit", (e) => {
 
 // Load everything on startup
 loadData();
+
+// ==========================================================================
+// HIGH-FIDELITY INTERACTION SCRIPTS (CURSOR, TILT, SCROLL BAR, STATUS POS)
+// ==========================================================================
+
+// Create custom cursor elements dynamically
+const cursorDot = document.createElement('div');
+cursorDot.className = 'cursor-dot';
+const cursorRing = document.createElement('div');
+cursorRing.className = 'cursor-ring';
+const cursorTag = document.createElement('div');
+cursorTag.className = 'cursor-tag';
+
+const cursorContainer = document.createElement('div');
+cursorContainer.className = 'custom-cursor';
+cursorContainer.appendChild(cursorDot);
+cursorContainer.appendChild(cursorRing);
+cursorContainer.appendChild(cursorTag);
+document.body.appendChild(cursorContainer);
+
+let ringX = 0, ringY = 0;
+
+// Cursor dot tracking is directly synchronized with window mouseMove
+window.addEventListener('mousemove', (e) => {
+  cursorDot.style.left = `${e.clientX}px`;
+  cursorDot.style.top = `${e.clientY}px`;
+  
+  cursorTag.style.left = `${e.clientX}px`;
+  cursorTag.style.top = `${e.clientY}px`;
+});
+
+// Cursor ring lag (using lerp loop)
+function updateRing() {
+  const dx = mouseX - ringX;
+  const dy = mouseY - ringY;
+  
+  ringX += dx * 0.15;
+  ringY += dy * 0.15;
+  
+  cursorRing.style.left = `${ringX}px`;
+  cursorRing.style.top = `${ringY}px`;
+  
+  requestAnimationFrame(updateRing);
+}
+updateRing();
+
+// Bind hover trigger to interactive items
+document.addEventListener('mouseover', (e) => {
+  const target = e.target;
+  const isInteractive = target.closest('a') || target.closest('button') || target.closest('.project-card') || target.closest('.cert-card') || target.closest('.skill-category') || target.closest('input') || target.closest('textarea') || target.closest('.blog-nav-item');
+  
+  if (isInteractive) {
+    document.body.classList.add('cursor-hover');
+    
+    // Dynamic contextual cursor tags
+    if (target.closest('a') || target.closest('.blog-nav-item')) {
+      cursorTag.textContent = 'SYS_LINK';
+    } else if (target.closest('button') || target.closest('input[type="submit"]')) {
+      cursorTag.textContent = 'EXEC_CMD';
+    } else if (target.closest('.project-card')) {
+      cursorTag.textContent = 'DECRYPT_PROJ';
+    } else if (target.closest('.cert-card')) {
+      cursorTag.textContent = 'VERIFY_CERT';
+    } else if (target.closest('input') || target.closest('textarea')) {
+      cursorTag.textContent = 'INPUT_FIELD';
+    } else {
+      cursorTag.textContent = 'SYS_FOCUS';
+    }
+  }
+});
+
+document.addEventListener('mouseout', (e) => {
+  const target = e.target;
+  const isLeavingInteractive = target.closest('a') || target.closest('button') || target.closest('.project-card') || target.closest('.cert-card') || target.closest('.skill-category') || target.closest('input') || target.closest('textarea') || target.closest('.blog-nav-item');
+  
+  if (isLeavingInteractive) {
+    document.body.classList.remove('cursor-hover');
+  }
+});
+
+// 3D Tilt Card Animations for Desktop viewports (width > 768px)
+function initTilt() {
+  if (window.innerWidth <= 768) return;
+  
+  const tiltElements = document.querySelectorAll('.project-card, .cert-card, .skill-category, .system-profile, .cyber-panel');
+  
+  tiltElements.forEach(el => {
+    if (el.dataset.tiltBound === 'true') return;
+    el.dataset.tiltBound = 'true';
+    
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = -(y - centerY) / (rect.height / 10);
+      const rotateY = (x - centerX) / (rect.width / 10);
+      
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+    });
+    
+    el.style.transition = 'transform 0.1s ease';
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      el.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+  });
+}
+window.addEventListener('DOMContentLoaded', initTilt);
+
+// Scroll dynamic changes: progress bar, parallax background lines, scroll decrypt percentage
+const scrollProgress = document.getElementById('scroll-progress');
+const statusBadge = document.querySelector('.status-badge');
+const cyberLines = document.querySelector('.cyber-lines');
+
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+  
+  // Update progress bar width
+  if (scrollProgress) {
+    scrollProgress.style.width = `${scrolled}%`;
+  }
+  
+  // Parallax background shifts
+  if (cyberLines) {
+    cyberLines.style.transform = `translateY(${winScroll * 0.12}px)`;
+  }
+  
+  // Update decrypt status badge
+  if (statusBadge) {
+    statusBadge.innerHTML = `<span class="logo-dot" style="animation-duration: 0.8s;"></span> DECRYPT_PROGRESS: ${Math.round(scrolled)}%`;
+  }
+});

@@ -1661,3 +1661,135 @@ footer {
     padding: 12px 15px;
   }
 }
+
+/* ==========================================================================
+   HIGH-FIDELITY INTERACTION STYLES & CUSTOM CURSOR
+   ========================================================================== */
+
+/* Scroll Progress Bar at the top of viewport */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3.5px;
+  background: linear-gradient(90deg, var(--accent-green), var(--accent-purple), var(--accent-cyan));
+  z-index: 11000;
+  box-shadow: 0 0 10px var(--accent-green-glow);
+  transition: width 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* 3D Card Tilt Effects (only on devices with cursor support) */
+.project-card, .cert-card, .skill-category, .system-profile, .cyber-panel {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+/* Custom Interactive Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10005;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10007;
+  transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 0 10px var(--accent-green-glow);
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--accent-purple);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10006;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.cursor-tag {
+  position: fixed;
+  background-color: rgba(13, 7, 24, 0.95);
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+  font-family: var(--font-cyber);
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  pointer-events: none;
+  white-space: nowrap;
+  display: none;
+  transform: translate(15px, 15px);
+  z-index: 10008;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.15);
+  transition: opacity 0.15s ease;
+}
+
+/* Hover States for Interactive Elements */
+body.cursor-hover .cursor-dot {
+  background-color: var(--accent-cyan);
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
+body.cursor-hover .cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: var(--accent-cyan);
+  background-color: rgba(0, 240, 255, 0.04);
+  border-style: dashed;
+  animation: spin 10s linear infinite;
+}
+
+body.cursor-hover .cursor-tag {
+  display: block;
+  opacity: 1;
+}
+
+/* Hide default cursor on desktop viewports to support the custom cursor */
+@media (min-width: 769px) {
+  body, 
+  body a, 
+  body button, 
+  body input, 
+  body textarea, 
+  body select,
+  body .project-card, 
+  body .cert-card, 
+  body .skill-category,
+  body .blog-nav-item,
+  body #access-btn {
+    cursor: none !important;
+  }
+}
+
+/* Custom cursor elements are hidden entirely on mobile viewports */
+@media (max-width: 768px) {
+  .cursor-dot, .cursor-ring, .cursor-tag {
+    display: none !important;
+  }
+}
+
