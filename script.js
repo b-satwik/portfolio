@@ -318,7 +318,8 @@ accessBtn.addEventListener("click", () => {
   overlay.style.opacity = 0;
   setTimeout(() => {
     overlay.style.display = "none";
-    document.body.style.overflow = "auto";
+    document.body.classList.remove("boot-loading");
+    document.body.style.overflow = "";
     // Trigger scroll reveals initially
     revealElements();
   }, 800);
@@ -647,43 +648,103 @@ contactForm.addEventListener("submit", (e) => {
   
   formStatus.style.display = "block";
   formStatus.className = "form-status info";
-  formStatus.textContent = "guest@echo-security:~$ ./send_message.sh --target protonmail";
-  
-  let step = 0;
-  const logSteps = [
-    `Connecting secure gateway: balasatwikcontact@proton.me...`,
-    `Encrypting payload using recipient's public key (RSA-4096)...`,
-    `Transmitting message logs packets. IP logged.`,
-    `Status code: 200 SUCCESS. Mail transmitted.`
-  ];
+  formStatus.innerHTML = ""; // Clear previous status
   
   const submitBtn = document.querySelector(".shell-submit-btn");
   submitBtn.disabled = true;
   submitBtn.style.opacity = 0.5;
   
-  function animateSubmission() {
-    if (step < logSteps.length) {
-      const newLine = document.createElement("div");
-      newLine.textContent = `> ${logSteps[step]}`;
-      formStatus.appendChild(newLine);
-      playTerminalBeep();
-      step++;
-      setTimeout(animateSubmission, 1000);
-    } else {
-      formStatus.className = "form-status success";
-      const finalMsg = document.createElement("div");
-      finalMsg.style.fontWeight = "bold";
-      finalMsg.textContent = "Message transmitted successfully! Echo Satwik will respond shortly.";
-      formStatus.appendChild(finalMsg);
-      
-      // Clear form
-      contactForm.reset();
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = 1;
-    }
+  // Terminal log rendering utility
+  function addLogLine(text, type = "") {
+    const newLine = document.createElement("div");
+    if (type) newLine.className = type;
+    newLine.textContent = text;
+    formStatus.appendChild(newLine);
+    playTerminalBeep();
   }
   
-  setTimeout(animateSubmission, 800);
+  // Start simulation steps
+  addLogLine("guest@echo-security:~$ ./send_message.sh --target protonmail");
+  
+  setTimeout(() => {
+    addLogLine("> Connecting secure gateway: balasatwikcontact@proton.me...");
+    setTimeout(() => {
+      addLogLine("> Encrypting payload using recipient's public key (RSA-4096)...");
+      
+      const accessKey = "74a5bc21-7c3a-40dd-b54c-79282b527afa";
+      
+      if (accessKey === "YOUR_ACCESS_KEY_HERE" || accessKey.trim() === "") {
+        // Simulated mode if key is empty
+        setTimeout(() => {
+          addLogLine("> Transmitting message logs packets. IP logged.");
+          setTimeout(() => {
+            addLogLine("> Status code: 200 SUCCESS. Mail transmitted.");
+            setTimeout(() => {
+              formStatus.className = "form-status success";
+              addLogLine("Message transmitted successfully! (SIMULATED mode, no access key).", "success-msg");
+              contactForm.reset();
+              submitBtn.disabled = false;
+              submitBtn.style.opacity = 1;
+            }, 800);
+          }, 800);
+        }, 800);
+        return;
+      }
+      
+      // Real API mode
+      addLogLine("> Initiating secure connection with API gateway...");
+      
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: name,
+          email: email,
+          message: message,
+          subject: `PORTFOLIO ALERT: Connection established from ${name}`
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          addLogLine("> Transmitting message logs packets. IP logged.");
+          setTimeout(() => {
+            addLogLine("> Status code: 200 SUCCESS. Mail transmitted.");
+            setTimeout(() => {
+              formStatus.className = "form-status success";
+              addLogLine("Message transmitted successfully! Bala Satwik will respond shortly.", "success-msg");
+              contactForm.reset();
+              submitBtn.disabled = false;
+              submitBtn.style.opacity = 1;
+            }, 800);
+          }, 800);
+        } else {
+          // Display the real API error (e.g. Email not verified)
+          addLogLine(`> Status code: ERROR. API Response: ${data.message}`, "error-msg");
+          setTimeout(() => {
+            formStatus.className = "form-status error";
+            addLogLine("Transmission aborted. Check if your access key is verified and active.", "error-msg");
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = 1;
+          }, 800);
+        }
+      })
+      .catch(err => {
+        addLogLine(`> Status code: FAILED. Network Connection Error.`, "error-msg");
+        setTimeout(() => {
+          formStatus.className = "form-status error";
+          addLogLine("Transmission aborted. Check your internet connection.", "error-msg");
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = 1;
+        }, 800);
+      });
+      
+    }, 800);
+  }, 800);
 });
 
 // Load everything on startup

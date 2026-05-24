@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Echo $USER // Bala Satwik Boyina - Cybersecurity Portfolio</title>
-  <meta name="description" content="Futuristic cinematic hacker-style portfolio for Echo Satwik (Bala Satwik Boyina), showcasing Cowrie Honeypots, RSA Cryptography, Malware analysis, AWS networking, and cybersecurity research.">
-  <link rel="stylesheet" href="style.css?v=1.0.1">
+  <meta name="description" content="Futuristic cinematic hacker-style portfolio for Bala Satwik (Bala Satwik Boyina), showcasing Cowrie Honeypots, RSA Cryptography, Malware analysis, AWS networking, and cybersecurity research.">
+  <link rel="stylesheet" href="style.css?v=2.0.2">
 </head>
-<body>
+<body class="boot-loading">
 
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress" id="scroll-progress"></div>
@@ -34,6 +34,13 @@
         <div style="width: 40px;"></div>
       </div>
       <div class="boot-content" id="boot-log-content">
+        <pre class="boot-logo">
+ ____    _    _          _        ____    _  _______        _____ _  __
+| __ )  / \  | |        / \      / ___|  / \|_   _\ \      / /_ _| |/ /
+|  _ \ / _ \ | |       / _ \     \___ \ / _ \ | |  \ \ /\ / / | || ' / 
+| |_) / ___ \| |___   / ___ \     ___) / ___ \| |   \ V  V /  | || . \ 
+|____/_/   \_\_____| /_/   \_\   |____/_/   \_\_|    \_/\_/  |___|_|\_\
+        </pre>
         <div class="boot-cursor"></div>
         
         <!-- Access Granted Panel (appears after printout) -->
@@ -47,10 +54,10 @@
 
   <!-- Main Navigation Header -->
   <header>
-    <div class="nav-container">
+    <div class="nav-container container">
       <a href="#hero" class="logo">
         <span class="logo-dot"></span>
-        ECHO_SATWIK <span>// SEC_CORE</span>
+        BALA_SATWIK <span>// SEC_CORE</span>
       </a>
       
       <nav>
@@ -85,7 +92,7 @@
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
-    <div class="hero-grid">
+    <div class="hero-grid hero-container container">
       <div class="hero-left">
         <div class="hero-subtitle">SYSTEM.OUT.PRINTLN("ECHO_DECRYPT");</div>
         <h1 class="hero-title">ECHO $USER:<br><span>BALA SATWIK</span></h1>
@@ -113,7 +120,7 @@
         </div>
       </div>
       
-      <div class="hero-right">
+      <div class="hero-right hero-image">
         <div class="hologram-container">
           <div class="hologram-circle"></div>
           <div class="hologram-circle-inner"></div>
@@ -133,7 +140,7 @@
       <h2 class="section-title">SYSTEM PROFILE</h2>
     </div>
     
-    <div class="about-grid">
+    <div class="about-grid container">
       <div class="system-profile neon-border">
         <div class="profile-header">
           <span>&gt;_ PROFILE_DECRYPT.DAT</span>
@@ -141,7 +148,7 @@
         </div>
         <div class="profile-body">
           <p class="profile-desc">
-            Hi, I'm **Bala Satwik Boyina (Echo Satwik)**. I'm a passionate Cybersecurity Engineer specializing in the design of secure network architectures, honeypots, and vulnerability research. My work ranges from building dynamic threat intelligence pipelines to developing micro steganography applications and establishing secure tunnels in cloud environments.
+            Hi, I'm **Bala Satwik Boyina**. I'm a passionate Cybersecurity Engineer specializing in the design of secure network architectures, honeypots, and vulnerability research. My work ranges from building dynamic threat intelligence pipelines to developing micro steganography applications and establishing secure tunnels in cloud environments.
           </p>
           <div class="profile-attributes">
             <div class="attribute-item">
@@ -195,7 +202,7 @@
       <h2 class="section-title">SKILLS & ATTACK SURFACES</h2>
     </div>
 
-    <div class="skills-grid">
+    <div class="skills-grid container">
       <!-- Category 1 -->
       <div class="skill-category neon-border">
         <h3 class="skill-category-title">
@@ -355,7 +362,7 @@
     </div>
 
     <!-- Target container for projects (will be filled dynamically) -->
-    <div class="projects-grid" id="projects-container">
+    <div class="projects-grid container" id="projects-container">
       <div style="color: var(--accent-purple); font-family: var(--font-cyber); text-align: center; grid-column: 1/-1; padding: 40px;">
         [Loading local projects database. Decrypting indices...]
       </div>
@@ -572,7 +579,7 @@
       <h2 class="section-title">CONTACT PROTOCOL</h2>
     </div>
 
-    <div class="contact-container">
+    <div class="contact-container container">
       <div class="contact-info">
         <div class="contact-card neon-border">
           <p class="contact-lead">Establish a secure connection. You can reach out directly via encrypted channels or send a message through the local terminal socket.</p>
@@ -618,20 +625,21 @@
       <div class="contact-shell-wrapper neon-border">
         <div class="shell-header">&gt;_ SEND_SECURE_PAYLOAD.SH</div>
         <div class="shell-body">
-          <form class="shell-form" id="contact-form">
+          <form class="shell-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="74a5bc21-7c3a-40dd-b54c-79282b527afa">
             <div class="shell-input-group">
               <label class="shell-prompt" for="sender-name">guest@echo-security:~$ --input-name</label>
-              <input class="shell-field" id="sender-name" type="text" placeholder="Enter Name..." required>
+              <input class="shell-field" id="sender-name" name="name" type="text" placeholder="Enter Name..." required>
             </div>
             
             <div class="shell-input-group">
               <label class="shell-prompt" for="sender-email">guest@echo-security:~$ --input-email</label>
-              <input class="shell-field" id="sender-email" type="email" placeholder="Enter Secure Return Mail..." required>
+              <input class="shell-field" id="sender-email" name="email" type="email" placeholder="Enter Secure Return Mail..." required>
             </div>
 
             <div class="shell-input-group">
               <label class="shell-prompt" for="sender-message">guest@echo-security:~$ --input-payload</label>
-              <textarea class="shell-field" id="sender-message" placeholder="Enter message payload details..." required></textarea>
+              <textarea class="shell-field" id="sender-message" name="message" placeholder="Enter message payload details..." required></textarea>
             </div>
 
             <button class="shell-submit-btn" type="submit">
@@ -648,9 +656,9 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-container">
+    <div class="footer-container container">
       <div class="footer-text">
-        © 2026 Echo Satwik Core. Decrypted successfully. Hardened under Linux kernel policies.
+        © 2026 Bala Satwik Core. Decrypted successfully. Hardened under Linux kernel policies.
       </div>
       <div class="footer-links">
         <a href="https://github.com/b-satwik" target="_blank" title="GitHub">
@@ -663,6 +671,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2.0.2"></script>
 </body>
 </html>

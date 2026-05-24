@@ -44,9 +44,15 @@
   scrollbar-color: var(--accent-purple) var(--bg-secondary);
 }
 
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  zoom: 1;
+}
+
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
   background-color: var(--bg-raw);
 }
 
@@ -56,7 +62,27 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   position: relative;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Layout Alignment & Scaling Normalization */
+.container {
+  width: min(1400px, 92%);
+  margin: 0 auto;
+}
+
+.hero-container {
+  transform-origin: top center;
+  transform: scale(1.02);
+}
+
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Scrollbar styling */
@@ -146,6 +172,21 @@ body {
 }
 
 /* Terminal Boot Overlay */
+body.boot-loading {
+  overflow: hidden !important;
+}
+
+.boot-logo {
+  font-family: monospace;
+  font-size: clamp(6px, 1.2vw, 12px);
+  line-height: 1.2;
+  color: var(--accent-green);
+  text-shadow: 0 0 5px var(--accent-green-glow);
+  margin-bottom: 20px;
+  white-space: pre;
+  overflow-x: auto;
+}
+
 #boot-overlay {
   position: fixed;
   top: 0;
@@ -476,7 +517,7 @@ nav a:hover::after {
 
 /* Sections Setup */
 section {
-  padding: 100px 30px 60px;
+  padding: 80px 30px 80px;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -1441,6 +1482,19 @@ textarea.shell-field {
 
 .form-status.error {
   color: #ff5f56;
+}
+
+.form-status div {
+  margin-bottom: 5px;
+}
+
+.form-status div.error-msg {
+  color: #ff5f56;
+}
+
+.form-status div.success-msg {
+  color: var(--accent-green);
+  font-weight: bold;
 }
 
 /* Footer */
